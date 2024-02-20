@@ -94,6 +94,7 @@ num_lines_a=$(wc -l < tmp) #wehn inputing a, there should be 3 lines of output
 if [ "$num_lines_a" -eq 3 ];
 then
     echo "PASS" #expected to pass, if MazeGame.simple.map is used
+else
     echo "FAIL" #if fail, then code is not working as expected or it hit a premade error, wall or out of bounds
 fi
 
@@ -127,7 +128,7 @@ else
 fi
 
 echo "Test : does all wrong inputs print an error message?" #this tests wether a wrong input prints an error message
-./Skeletoncode < Inputs/wrong.controls.INPUTS > tmp 
+./Skeletoncode < Inputs/wrong.controls.INPUT > tmp 
 for i in {1..42} #42 is the number of lines of error there should be calcuated from how many wrong inputs there can be
 do 
 #line below adapated from example provided on:
