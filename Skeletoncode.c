@@ -40,14 +40,14 @@ int startPostion(Maze maze, Player* player){
     //find start postion to intialize the player position
     // scan for the "S"
     // store the x and y position of the "S" in the Player struct
-    // measure len
-    //nested for loop, to scan the maze for the "S"
+    // double nested loop, to scan the maze for the "S"
     // if "S" is not found print error message and exit
 }
 
-int endPostion(Maze maze, Player* player ){
+int endPostion(Maze* maze, Player player ){
     //find end postion to check if the player has reached the end
     // scan for the "F"
+    //doubel netsed loop. 
     // store the x any y postion of the "F" in xfinish and yfinish in the Maze struct
     // if "F" is not found print error message and exit
     // return xfinish and yfinish
@@ -59,7 +59,7 @@ void wMove(Maze maze, Player* player){
     // if the player can move up
     // move the player up
     // minus y in the Player struct
-        // player -> y--, to update the poitner 
+        // player -> y--, to update the pointer 
     // if the player cannot move up
     // print error message
     // if the player cant move becuase of "#"
@@ -75,7 +75,7 @@ void sMove(Maze maze, Player* player){
     // if the player can move down
     // move the player down
     // add from  y in the Player struct
-        // player -> y++, to update the poitner
+        // player -> y++, to update the pointer
     // if the player cannot move down
     // print error message
     // if the player cant move becuase of "#"
@@ -117,7 +117,7 @@ void dMove(Maze maze, Player* player){
     // 
 }
 
-int threeLineDisplay(Maze maze, Player player){
+int threeLineDisplay(Maze maze, Player player){ //creates a good level of diffculity for the player, so you cannt see the whole maze, just like in real life 
     // display 3 lines on maze to the console
     // the lien of the maze aboe the player
         //  y - 1
@@ -145,20 +145,15 @@ void displayMaze(Maze maze, Player player){
 
 int main(){
 
-    //check file is entered as a command line argument
+    // check file is entered as a command line argument
     // call the commandLineArg function
-    
-    // Open file in write mode
-    // Check if file is opened successfully
-    // if not print error message and exit
-    // "Error: File could not be opened"
 
-    
     // read the maze from the file
+    // checling file is valid (can be opened, not empty, etc)
     // store the maze in the Maze struct
     // call the readMaze function
 
-    //find start postion to intialize the player position
+    // find start postion to intialize the player position
     // call the startPostion function
     
     //find end position cuase we need it to end the game
@@ -179,16 +174,19 @@ int main(){
         // switch case for the player input
             // if player inputs "w"
                 // call the wMove function
-                // call the threeLineDisplay function
+                // if player can move
+                    // call the threeLineDisplay function
             //if player inputs "a"
                 // call the aMove function
-                // call the threeLineDisplay function
+                // if player can move
+                    // call the threeLineDisplay function
             //  if player inputs "s"
                 // call the sMove function
-                // call the threeLineDisplay function
+                // if player can move
+                    // call the threeLineDisplay function
             //  if player inputs "d"    
-                // call the dMove function
-                // call the threeLineDisplay function
+                // if player can move
+                    // call the threeLineDisplay function
             //  if player inputs "q"
                 // exit the game
                 //output message "You have quit the game"

@@ -146,7 +146,7 @@ fi
 #thats because the above test is only expected to pass before the player position is introduced
 #and the following test is only expected to pass after the player position is introduced
 
-echo "Test : Player choses to display the maze adn can see there position"
+echo "Test : Player choses to display the maze and can see there position"
 echo "m" | ./code > tmp #m is the command to display the maze, wont be case sensitive 
 if grep -q "X" tmp #X is the current position of the player
 then 
