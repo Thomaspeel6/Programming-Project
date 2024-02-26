@@ -18,10 +18,7 @@ typedef struct { // to know the position of the player at all times
         // x being greater than the number of columns suggests the player is out of bounds at the right
 } Player;
 
-int commandLineArg(int argc, char *argv[]){
-    //check file is entered as a command line argument
-    // if not print error message and exit
-}
+
 
 int readMaze(Maze* maze, FILE *file){
     // read the maze from the file
@@ -143,13 +140,14 @@ void displayMaze(Maze maze, Player player){
 }
 
 
-int main(){
+int main(int argc, char *argv[]){
 
     // check file is entered as a command line argument
-    // call the commandLineArg function
+    // "Usage: ./Skeletoncode.c <map>"
 
     // read the maze from the file
-    // checling file is valid (can be opened, not empty, etc)
+    // checling file is valid (can be opened, not empty, in the correct range etc)
+    // if not print error message (Error: File could not be opened) and exit
     // store the maze in the Maze struct
     // call the readMaze function
 

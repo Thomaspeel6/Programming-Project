@@ -3,6 +3,10 @@
 # MazeGame.simple.map is used to test wether the maze has a starting and finishing point, and if it contains walls and paths
                     # is also used to test wether the wasd commands work
 # MazeGame.complex.map is used to test a complex mazes.
+# MazeGame.empty.map is used to test wether the code can handle empty maps
+# MazeGame.large.map is used to test wether the code can handle large maps
+# MazeGame.small.map is used to test wether the code can handle small maps
+# MazeGame.notrectangle.map is used to test wether the code can handle maps that are not rectangles
 
 # simple.map.INPUT is used to test wether the player can reach the end of the maze for MazeGame.simple.map
 # complex.map.INPUT is used to test wether the player can reach the end of the maze for MazeGame.complex.map
@@ -22,6 +26,15 @@ else
     echo "FAIL" 
 fi
 
+echo "Test : does the file handle no command line arguement?"
+./Skeletoncode > tmp
+if grep -q "Usage: ./Skeletoncode.c <map>" tmp
+then 
+    echo "PASS" #expected to pass
+else 
+    echo "FAIL"
+fi
+
 echo "Test : does the file open?" #this tests wether the file opens
 ./Skeletoncode > tmp
 if grep -q "Error: File could not be opened" tmp
@@ -31,6 +44,41 @@ else
     echo "PASS" #expected to pass, means havent seen error message so a good thing :)
 fi
 
+echo "Test : Can the the code handle Empty Maps?" #this tests wether the file is empty
+./Skeletoncode > tmp #for this test to work use Maps/MazeGame.empty.map
+if grep -q "Error: File could not be opened" tmp
+then 
+    echo "PASS" #expected to pass
+else 
+    echo "FAIL"
+fi
+
+echo "Test : Can the the code handle a file that is too large?" #this tests wether the file is too large
+./Skeletoncode > tmp #for this test to work use Maps/MazeGame.large.map
+if grep -q "Error: File could not be opened" tmp
+then 
+    echo "PASS" #expected to pass
+else 
+    echo "FAIL"
+fi
+
+echo "Test : Can the the code handle a file that is too small?" #this tests wether the file is too small
+./Skeletoncode > tmp #for this test to work use Maps/MazeGame.small.map
+if grep -q "Error: File could not be opened" tmp
+then 
+    echo "PASS" #expected to pass
+else 
+    echo "FAIL"
+fi
+
+echo "Test: can code handle a file that is not a rectangle?" #this tests wether the file is a rectangle
+./Skeletoncode > tmp #for this test to work use Maps/MazeGame.notrectangle.map
+if grep -q "Error: File could not be opened" tmp
+then 
+    echo "PASS" #expected to pass
+else 
+    echo "FAIL"
+fi
 
 echo -e "~~ Functionality of The Maze ~~"
 echo "Test : Maze has a starting point"
