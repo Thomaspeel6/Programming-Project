@@ -31,6 +31,8 @@ int readMaze(Maze* maze, FILE *file){
     // store the maze in the Maze struct
     // if the maze is not read print error message and exit
     // "Error: Maze could not be read"
+    // if maze is not valid print error message and exit
+    // "Error: Maze is not valid"
 }
 
 int startPostion(Maze maze, Player* player){
@@ -49,6 +51,9 @@ int endPostion(Maze* maze, Player player ){
     // if "F" is not found print error message and exit
     // return xfinish and yfinish
 }
+
+// as my end or start posotion function do the same thing could create a function that does both
+int findPositions(Maze* maze, Player* player){} 
 
 void wMove(Maze maze, Player* player){
     // if player inputs "w"

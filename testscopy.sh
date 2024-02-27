@@ -243,7 +243,7 @@ fi
 
 echo "Test : Player choses to display the maze"
 echo "m" | ./Skeletoncode > tmp #m is the command to display the maze, wont be case sensitive
-if cmp -s tmp MazeGame.simpleNAV #compares the output of the code to the expected output
+if cmp -s tmp MazeGame.simple.map #compares the output of the code to the expected output
 then 
     echo "PASS" #expected to pass, but only before the i have introduced the player position
 else            #then it should fail, this test becomes oberselete once the player position is introduced
