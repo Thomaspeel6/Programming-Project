@@ -41,6 +41,7 @@ int startPostion(Maze maze, Player* player){
     // store the x and y position of the "S" in the Player struct
     // double nested loop, to scan the maze for the "S"
     // if "S" is not found print error message and exit
+    // print error if not found 
 }
 
 int endPostion(Maze* maze, Player player ){
@@ -50,6 +51,7 @@ int endPostion(Maze* maze, Player player ){
     // store the x any y postion of the "F" in xfinish and yfinish in the Maze struct
     // if "F" is not found print error message and exit
     // return xfinish and yfinish
+     // print error if not found 
 }
 
 // as my end or start posotion function do the same thing could create a function that does both
@@ -152,7 +154,7 @@ int main(int argc, char *argv[]){
 
     // read the maze from the file
     // checling file is valid (can be opened, not empty, in the correct range etc)
-    // if not print error message (Error: File could not be opened) and exit
+    // if not print error message (Error: File could not be opened) or "Error: File is not in valid format" and exit
     // store the maze in the Maze struct
     // call the readMaze function
 

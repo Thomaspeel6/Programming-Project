@@ -7,6 +7,7 @@
 # MazeGame.large.map is used to test wether the code can handle large maps
 # MazeGame.small.map is used to test wether the code can handle small maps
 # MazeGame.notrectangle.map is used to test wether the code can handle maps that are not rectangles
+# Maps/MazeGame.wrongsymbols.map is used to test wether the code can handle maps with wrong symbols
 
 # simple.map.INPUT is used to test wether the player can reach the end of the maze for MazeGame.simple.map
 # complex.map.INPUT is used to test wether the player can reach the end of the maze for MazeGame.complex.map
@@ -46,7 +47,7 @@ fi
 
 echo "Test : Can the the code handle Empty Maps?" #this tests wether the file is empty
 ./Skeletoncode > tmp #for this test to work use Maps/MazeGame.empty.map
-if grep -q "Error: File could not be opened" tmp
+if grep -q "Error: File is not in valid format"  tmp
 then 
     echo "PASS" #expected to pass
 else 
@@ -55,7 +56,7 @@ fi
 
 echo "Test : Can the the code handle a file that is too large?" #this tests wether the file is too large
 ./Skeletoncode > tmp #for this test to work use Maps/MazeGame.large.map
-if grep -q "Error: File could not be opened" tmp
+if grep -q "Error: File is not in valid format" tmp
 then 
     echo "PASS" #expected to pass
 else 
@@ -64,7 +65,7 @@ fi
 
 echo "Test : Can the the code handle a file that is too small?" #this tests wether the file is too small
 ./Skeletoncode > tmp #for this test to work use Maps/MazeGame.small.map
-if grep -q "Error: File could not be opened" tmp
+if grep -q "Error: File is not in valid format"  tmp
 then 
     echo "PASS" #expected to pass
 else 
@@ -73,49 +74,54 @@ fi
 
 echo "Test: can code handle a file that is not a rectangle?" #this tests wether the file is a rectangle
 ./Skeletoncode > tmp #for this test to work use Maps/MazeGame.notrectangle.map
-if grep -q "Error: File could not be opened" tmp
+if grep -q "Error: File is not in valid format" tmp
 then 
     echo "PASS" #expected to pass
 else 
     echo "FAIL"
 fi
 
-echo -e "~~ Functionality of The Maze ~~"
-echo "Test : Maze has a starting point"
-if grep -q "S" Maps/MazeGame.simple.map
+echo -e "~~ Functionality of The Maze ~~" #these tests should be checked with mazeGame.empty.map
+echo "Test : Maze has no starting point" #can my code handle a maze without a starting point
+./Skeletoncode > tmp
+if grep -q "Error: File did not contain a starting point" tmp
 then 
     echo "PASS" #expected to pass
 else 
     echo "FAIL"
 fi
 
-echo "Test : Maze has a finishing point"
-if grep -q "F" Maps/MazeGame.simple.map
+echo "Test : Maze has no finishing point" #can my code handle a maze without a finishing point
+./Skeletoncode > tmp
+if grep -q "Error: File did not contain a finishing point" tmp
 then 
     echo "PASS" #expected to pass
 else 
     echo "FAIL"
 fi
 
-echo "Test : Maze has a walls"
-if grep -q "#" Maps/MazeGame.simple.map
+echo "Test : Maze has no walls" #can my code handle a maze without walls "#"
+./Skeletoncode > tmp
+if grep -q "Error: File is not in valid format" tmp
 then 
     echo "PASS" #expected to pass
 else 
     echo "FAIL"
 fi
 
-echo "Test : Maze has a path" 
-if grep -q " " Maps/MazeGame.simple.map
+echo "Test : Maze has no path" #can my code handle a maze without paths " "
+./Skeletoncode > tmp
+if grep -q "Error: File is not in valid format" tmp
 then 
     echo "PASS" #expected to pass
 else 
     echo "FAIL"
 fi  
 
-#test for a poteinal invalid cahracter from the programmer (me) in the maze
-echo "Test : Maze Only contatins S, F, #, X, and spaces" 
-if grep -q "[^SF#X ]" Maps/MazeGame.simple.map
+
+echo "Test : Maze contatins other charactesr from S, F, #, X, and spaces" #can my code handle a maze with only the correct characters
+./Skeletoncode > tmp # use Maps/MazeGame.wrongsymbols.map to test this
+if grep -q "Error: File is not in valid format"  tmp
 then 
     echo "FAIL"
 else 
@@ -123,7 +129,7 @@ else
 fi
 
 echo -e "~~ Functionality of The Player ~~" 
-#for the follwiing that use./code is a plcae holder as i dont have the code yet, so will fail currenlty,
+#for the follwiing that use./Skeletoncode is a plcae holder as i dont have the code yet, so will fail currenlty,
 # but should pass once the code is complete
 
 echo "Test : does the "w" input work?" #this tests wether w works
